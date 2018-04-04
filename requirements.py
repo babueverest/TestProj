@@ -1,0 +1,11 @@
+Django==1.11.12
+django-admin==1.2.3
+django-excel-response2==2.0.8
+django-filter==1.1.0
+django-six==1.0.4
+djangorestframework==3.8.0
+gunicorn==19.7.1
+Markdown==2.6.11
+pytz==2018.3
+screen==1.0.1
+xlwt==1.3.0

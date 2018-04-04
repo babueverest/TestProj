@@ -1,0 +1,31 @@
+from django.conf.urls import url, include
+from rest_framework import routers
+
+from . import api
+from . import views
+
+router = routers.DefaultRouter()
+router.register(r'owner', api.OwnerViewSet)
+router.register(r'pet', api.PetViewSet)
+
+
+urlpatterns = (
+    # urls for Django Rest Framework API
+    url(r'^api/v1/', include(router.urls)),
+)
+
+urlpatterns += (
+    # urls for Owner
+    url(r'^pets/owner/$', views.OwnerListView.as_view(), name='pets_owner_list'),
+    url(r'^pets/owner/create/$', views.OwnerCreateView.as_view(), name='pets_owner_create'),
+    url(r'^pets/owner/detail/(?P<pk>\S+)/$', views.OwnerDetailView.as_view(), name='pets_owner_detail'),
+    url(r'^pets/owner/update/(?P<pk>\S+)/$', views.OwnerUpdateView.as_view(), name='pets_owner_update'),
+)
+
+urlpatterns += (
+    # urls for Pet
+    url(r'^pets/pet/$', views.PetListView.as_view(), name='pets_pet_list'),
+    url(r'^pets/pet/create/$', views.PetCreateView.as_view(), name='pets_pet_create'),
+    url(r'^pets/pet/detail/(?P<pk>\S+)/$', views.PetDetailView.as_view(), name='pets_pet_detail'),
+    url(r'^pets/pet/update/(?P<pk>\S+)/$', views.PetUpdateView.as_view(), name='pets_pet_update'),
+)
